@@ -1,4 +1,4 @@
-FROM php:7.1.2-fpm
+FROM php:7.1.9-fpm
 MAINTAINER Alberto Contreras <a.contreras@catchdigital.com>
 
 # install the PHP extensions we need
