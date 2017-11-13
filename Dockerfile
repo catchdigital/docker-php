@@ -1,12 +1,16 @@
-FROM php:7.1.10-fpm
+FROM php:7.1.11-fpm
 MAINTAINER Alberto Contreras <a.contreras@catchdigital.com>
 
 # install the PHP extensions we need
-RUN apt-get update && apt-get install -y libpng12-dev libjpeg-dev libpq-dev libldap2-dev mysql-client \
+RUN apt-get update && apt-get install -y libpng12-dev libjpeg-dev libpq-dev libldap2-dev mysql-client libmemcached-dev \
     && rm -rf /var/lib/apt/lists/* \
     && docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr \
     && docker-php-ext-configure ldap --with-libdir=lib/x86_64-linux-gnu/ \
     && docker-php-ext-install gd mbstring opcache pdo pdo_mysql pdo_pgsql zip ldap
+
+# Install Memcached
+RUN pecl install memcached && \
+    docker-php-ext-enable memcached
 
 # set recommended PHP.ini settings
 # see https://secure.php.net/manual/en/opcache.installation.php
