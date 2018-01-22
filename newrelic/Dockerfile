@@ -12,6 +12,7 @@ RUN wget -O - https://download.newrelic.com/548C16BF.gpg | apt-key add -
 RUN sh -c 'echo "deb http://apt.newrelic.com/debian/ newrelic non-free" \
 > /etc/apt/sources.list.d/newrelic.list'
 RUN apt-get update
-RUN apt-get install newrelic-php5 -y
+RUN apt-get install newrelic-php5 -y \
+    && rm -rf /var/lib/apt/lists/*
 
 RUN newrelic-install install
