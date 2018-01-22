@@ -2,7 +2,7 @@ FROM php:7.2.1-fpm
 MAINTAINER Alberto Contreras <a.contreras@catchdigital.com>
 
 # install the PHP extensions we need
-RUN apt-get update && apt-get install -y libpng12-dev libjpeg-dev libpq-dev libldap2-dev mysql-client \
+RUN apt-get update && apt-get install -y libpng-dev libjpeg-dev libpq-dev libldap2-dev mysql-client \
     && rm -rf /var/lib/apt/lists/* \
     && docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr \
     && docker-php-ext-configure ldap --with-libdir=lib/x86_64-linux-gnu/ \
