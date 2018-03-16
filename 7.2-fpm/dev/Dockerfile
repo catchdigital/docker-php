@@ -1,5 +1,6 @@
 FROM php:7.2-fpm
-MAINTAINER Liam Hiscock
+LABEL maintainer.1="Alberto Contreras <a.contreras@catchdigital.com>" \
+      maintainer.2="Liam Hiscock <l.hiscock@catchdigital.com>"
 
 # Install the PHP extensions we need
 RUN apt-get update && apt-get install -y libpng-dev libjpeg-dev libpq-dev libldap2-dev mysql-client\
