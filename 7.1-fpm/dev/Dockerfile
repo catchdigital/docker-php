@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install -y libpng-dev libjpeg-dev libpq-dev liblda
 
 # Install version specific plugins.
 ADD install.sh install.sh
-RUN chmod +x install.sh && sh ./install.sh && rm install.sh
+RUN chmod +x install.sh && sh ./install.sh dev && rm install.sh
 
 # Project cleanup.
 RUN rm -rf /var/lib/apt/lists/*
