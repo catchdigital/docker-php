@@ -5,8 +5,8 @@ sedStr="s/PHP_VERSION/$version/g"
 
 sed "$sedStr" $1 > $2
 
-cp $version/install.sh $version/dev/install.sh
-cp $version/install.sh $version/prod/install.sh
+cp -rf $version/install.sh $version/dev/install.sh
+cp -rf $version/install.sh $version/prod/install.sh
 }
 
 versions=(5.6 7.1 7.2)
