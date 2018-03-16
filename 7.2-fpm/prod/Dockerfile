@@ -1,4 +1,4 @@
-FROM php:7.2
+FROM php:7.2-fpm
 MAINTAINER Liam Hiscock
 
 # Install the PHP extensions we need

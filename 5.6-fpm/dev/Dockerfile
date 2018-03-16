@@ -1,4 +1,4 @@
-FROM php:7.1
+FROM php:5.6-fpm
 MAINTAINER Liam Hiscock
 
 # Install the PHP extensions we need
@@ -23,7 +23,21 @@ RUN { \
         echo 'opcache.revalidate_freq=60'; \
         echo 'opcache.fast_shutdown=1'; \
         echo 'opcache.enable_cli=1'; \
+        echo 'opcache.enable=1'; \
     } > /usr/local/etc/php/conf.d/opcache-recommended.ini
+
+RUN { \
+        echo 'max_file_uploads = 100'; \
+        echo 'upload_max_filesize = 256M'; \
+        echo 'post_max_size = 256M'; \
+        echo 'memory_limit = 256M'; \
+        echo 'xdebug.remote_enable = ${XDEBUG_ENABLE}'; \
+        echo 'xdebug.remote_connect_back = ${XDEBUG_REMOTE_CONNECT_BACK}'; \
+        echo 'xdebug.remote_host = ${XDEBUG_HOST}'; \
+        echo 'xdebug.remote_port = ${XDEBUG_PORT}'; \
+        echo 'xdebug.remote_handler = dbgp'; \
+        echo 'xdebug.max_nesting_level = 256'; \
+    } > /usr/local/etc/php/conf.d/x-config.ini
 
 WORKDIR /var/www/html
 
