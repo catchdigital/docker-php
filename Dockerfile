@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y libpng-dev libjpeg-dev libpq-dev liblda
     && docker-php-ext-install gd mbstring opcache pdo pdo_mysql pdo_pgsql zip ldap
 
 # Install soap client.
-RUN apt-get install libxml2-dev \
+RUN apt-get install libxml2-dev -y \
     && docker-php-ext-install soap
 
 ## Install necessary libraries
