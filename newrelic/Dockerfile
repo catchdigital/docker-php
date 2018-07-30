@@ -6,7 +6,7 @@ ENV NR_INSTALL_SILENT 1
 
 ## Install wget
 RUN apt-get update \
-    && apt-get install wget -y
+    && apt-get install wget gnupg -y
 
 RUN wget -O - https://download.newrelic.com/548C16BF.gpg | apt-key add -
 RUN sh -c 'echo "deb http://apt.newrelic.com/debian/ newrelic non-free" \
