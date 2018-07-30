@@ -1,4 +1,4 @@
-FROM catchdigital/php:7.2.7-fpm
+FROM catchdigital/php:7.2.8-fpm
 MAINTAINER Alberto Contreras <a.contreras@catchdigital.com>
 
 ## Install necessary libraries

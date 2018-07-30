@@ -1,4 +1,4 @@
-FROM php:7.2.7-fpm
+FROM php:7.2.8-fpm
 MAINTAINER Alberto Contreras <a.contreras@catchdigital.com>
 
 # install default PHP extensions
@@ -6,6 +6,12 @@ RUN apt-get update && apt-get install -y libpng-dev libjpeg-dev libpq-dev liblda
     && docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr \
     && docker-php-ext-configure ldap --with-libdir=lib/x86_64-linux-gnu/ \
     && docker-php-ext-install gd mbstring opcache pdo pdo_mysql pdo_pgsql zip ldap
+
+## Install necessary libraries
+RUN apt-get update && apt-get install libmemcached-dev -y \
+    && pecl install memcached \
+    && docker-php-ext-enable memcached \
+    && rm -rf /var/lib/apt/lists/*
 
 # Install imagick
 RUN apt-get install -y libmagickwand-6.q16-dev --no-install-recommends \
