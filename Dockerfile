@@ -7,16 +7,19 @@ RUN apt-get update && apt-get install -y libpng-dev libjpeg-dev libpq-dev liblda
     && docker-php-ext-configure ldap --with-libdir=lib/x86_64-linux-gnu/ \
     && docker-php-ext-install gd mbstring opcache pdo pdo_mysql pdo_pgsql zip ldap
 
+# Install soap client.
+RUN apt-get install libxml2-dev \
+    && docker-php-ext-install soap
+
 ## Install necessary libraries
-RUN apt-get update && apt-get install libmemcached-dev -y \
+RUN apt-get install libmemcached-dev -y \
     && pecl install memcached \
-    && docker-php-ext-enable memcached \
-    && rm -rf /var/lib/apt/lists/*
+    && docker-php-ext-enable memcached
 
 # Install imagick
 RUN apt-get install -y libmagickwand-6.q16-dev --no-install-recommends \
-		&& ln -s /usr/lib/x86_64-linux-gnu/ImageMagick-6.8.9/bin-Q16/MagickWand-config /usr/bin \
-		&& pecl install imagick \
+	&& ln -s /usr/lib/x86_64-linux-gnu/ImageMagick-6.8.9/bin-Q16/MagickWand-config /usr/bin \
+	&& pecl install imagick \
     && echo "extension=imagick.so" > /usr/local/etc/php/conf.d/ext-imagick.ini
 
 # set recommended PHP.ini settings
