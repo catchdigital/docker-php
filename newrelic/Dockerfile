@@ -1,4 +1,4 @@
-FROM catchdigital/php:7.2.8-fpm
+FROM catchdigital/php:7.2.12-fpm
 MAINTAINER Alberto Contreras <a.contreras@catchdigital.com>
 
 ## Set variables
