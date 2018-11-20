@@ -25,3 +25,5 @@ Beside the necessary libraries, it contains also:
 * mbstring
 * zip
 * ldap
+* xdebug (only dev version)
+* newrelic (only newrelic version)
