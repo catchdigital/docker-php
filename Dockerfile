@@ -1,8 +1,8 @@
-FROM php:7.3.6-fpm
+FROM php:7.3.13-fpm
 MAINTAINER Alberto Contreras <a.contreras@catchdigital.com>
 
 # install default PHP extensions
-RUN apt-get update && apt-get install -y libpng-dev libjpeg-dev libzip-dev libpq-dev libldap2-dev mysql-client rsyslog imagemagick \
+RUN apt-get update && apt-get install -y libpng-dev libjpeg-dev libzip-dev libpq-dev libldap2-dev default-mysql-client rsyslog imagemagick \
     && docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr \
     && docker-php-ext-configure ldap --with-libdir=lib/x86_64-linux-gnu/ \
     && docker-php-ext-install gd mbstring opcache pdo pdo_mysql pdo_pgsql zip ldap
@@ -11,10 +11,13 @@ RUN apt-get update && apt-get install -y libpng-dev libjpeg-dev libzip-dev libpq
 RUN apt-get install libxml2-dev -y \
     && docker-php-ext-install soap
 
+# Install BCMath
+RUN docker-php-ext-install bcmath
+
 ## Install necessary libraries
 RUN apt-get install libmemcached-dev -y \
     && pecl install memcached \
-    && docker-php-ext-enable memcached bcmath
+    && docker-php-ext-enable memcached
 
 # Install imagick
 RUN apt-get install -y libmagickwand-6.q16-dev --no-install-recommends \
