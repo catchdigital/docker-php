@@ -11,10 +11,13 @@ RUN apt-get update && apt-get install -y libpng-dev libjpeg-dev libzip-dev libpq
 RUN apt-get install libxml2-dev -y \
     && docker-php-ext-install soap
 
+# Install BCMath
+RUN docker-php-ext-install bcmath
+
 ## Install necessary libraries
 RUN apt-get install libmemcached-dev -y \
     && pecl install memcached \
-    && docker-php-ext-enable memcached bcmath
+    && docker-php-ext-enable memcached
 
 # Install imagick
 RUN apt-get install -y libmagickwand-6.q16-dev --no-install-recommends \
