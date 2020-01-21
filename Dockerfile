@@ -14,7 +14,7 @@ RUN apt-get install libxml2-dev -y \
 ## Install necessary libraries
 RUN apt-get install libmemcached-dev -y \
     && pecl install memcached \
-    && docker-php-ext-enable memcached
+    && docker-php-ext-enable memcached bcmath
 
 # Install imagick
 RUN apt-get install -y libmagickwand-6.q16-dev --no-install-recommends \
