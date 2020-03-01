@@ -1,4 +1,4 @@
-FROM php:7.3.13-fpm
+FROM php:7.3.15-fpm
 MAINTAINER Alberto Contreras <a.contreras@catchdigital.com>
 
 # install default PHP extensions
@@ -36,7 +36,7 @@ RUN { \
         echo 'opcache.enable_cli=1'; \
     } > /usr/local/etc/php/conf.d/opcache-recommended.ini
 
-# Create CMd start file
+# Create CMD start file
 RUN { \
         echo '#!/bin/bash'; \
         echo 'rsyslogd'; \
@@ -47,11 +47,15 @@ RUN chmod +x /php-fpm.sh
 # Clean up
 RUN rm -rf /var/lib/apt/lists/*
 
+RUN usermod -u 1000 www-data \
+    && usermod -a -G users www-data \
+    && usermod -d /root www-data
+
+# Set up bash
+COPY ./.bashrc /root/.bashrc
+
 # Set up working directory
 WORKDIR /var/www/html
-
-RUN usermod -u 1000 www-data
-RUN usermod -a -G users www-data
 
 RUN chown -R www-data:www-data /var/www
 
