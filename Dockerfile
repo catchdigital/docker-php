@@ -1,9 +1,9 @@
-FROM php:7.3.13-fpm
+FROM php:7.4.4-fpm
 MAINTAINER Alberto Contreras <a.contreras@catchdigital.com>
 
 # install default PHP extensions
-RUN apt-get update && apt-get install -y libpng-dev libjpeg-dev libzip-dev libpq-dev libldap2-dev default-mysql-client rsyslog imagemagick \
-    && docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr \
+RUN apt-get update && apt-get install -y libpng-dev libjpeg-dev libonig-dev libzip-dev libpq-dev libldap2-dev default-mysql-client rsyslog imagemagick \
+    && docker-php-ext-configure gd --with-jpeg \
     && docker-php-ext-configure ldap --with-libdir=lib/x86_64-linux-gnu/ \
     && docker-php-ext-install gd mbstring opcache pdo pdo_mysql pdo_pgsql zip ldap
 
