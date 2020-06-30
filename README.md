@@ -4,9 +4,9 @@ Basic PHP image with extra setting ready to use.
 
 ## Version
 
-* `7.3.15-fpm`: PHP 7.3.15 with the necessary tools to run a site. (Latest)
-* `7.3.15-fpm-dev`: Extensions of 7.3.15-fpm with xdebug for development
-* `7.3.15-fpm-newrelic`: Extensions of 7.3.15-fpm with newrelic php extension
+* `7.3.18-fpm`: PHP 7.3.18 with the necessary tools to run a site. (Latest)
+* `7.3.18-fpm-dev`: Extensions of 7.3.18-fpm with xdebug for development
+* `7.3.18-fpm-newrelic`: Extensions of 7.3.18-fpm with newrelic php extension
 
 ## Modules
 

@@ -1,4 +1,4 @@
-FROM php:7.3.15-fpm
+FROM php:7.3.18-fpm
 MAINTAINER Alberto Contreras <a.contreras@catchdigital.com>
 
 # install default PHP extensions
