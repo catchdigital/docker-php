@@ -1,11 +1,11 @@
-FROM php:7.4.4-fpm
+FROM php:7.4.9-fpm
 MAINTAINER Alberto Contreras <a.contreras@catchdigital.com>
 
 # install default PHP extensions
 RUN apt-get update && apt-get install -y libpng-dev libjpeg-dev libonig-dev libzip-dev libpq-dev libldap2-dev default-mysql-client rsyslog imagemagick \
     && docker-php-ext-configure gd --with-jpeg \
     && docker-php-ext-configure ldap --with-libdir=lib/x86_64-linux-gnu/ \
-    && docker-php-ext-install gd mbstring opcache pdo pdo_mysql pdo_pgsql zip ldap
+    && docker-php-ext-install gd mbstring opcache pdo pdo_mysql pdo_pgsql zip ldap bz2
 
 # Install soap client.
 RUN apt-get install libxml2-dev -y \
