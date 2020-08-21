@@ -4,9 +4,9 @@ Basic PHP image with extra setting ready to use.
 
 ## Version
 
-* `7.4.4-fpm`: PHP 7.4.4 with the necessary tools to run a site. (Latest)
-* `7.4.4-fpm-dev`: Extensions of 7.4.4-fpm with xdebug for development
-* `7.4.4-fpm-newrelic`: Extensions of 7.4.4-fpm with newrelic php extension
+* `7.4.9-fpm`: PHP 7.4.9 with the necessary tools to run a site. (Latest)
+* `7.4.9-fpm-dev`: Extensions of 7.4.9-fpm with xdebug for development
+* `7.4.9-fpm-newrelic`: Extensions of 7.4.9-fpm with newrelic php extension
 
 ## Modules
 
