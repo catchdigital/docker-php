@@ -1,4 +1,4 @@
-FROM catchdigital/php:7.4.9-fpm
+FROM catchdigital/php:7.4.14-fpm
 MAINTAINER Alberto Contreras <a.contreras@catchdigital.com>
 
 # Install xdebug
