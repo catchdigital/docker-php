@@ -1,10 +1,18 @@
-FROM php:7.4.21-fpm
+FROM php:7.4.25-fpm
 MAINTAINER Alberto Contreras <a.contreras@catchdigital.com>
+
+# Supported architectures.
+RUN ARCH= && dpkgArch="$(dpkg --print-architecture)" \
+  && case "${dpkgArch##*-}" in \
+    amd64) ARCH='x64'; LIB='x86_64';; \
+    arm64) ARCH='arm64'; LIB='aarch64';; \
+    *) echo "unsupported architecture"; exit 1 ;; \
+  esac
 
 # install default PHP extensions
 RUN apt-get update && apt-get install -y libpng-dev libjpeg-dev libonig-dev libzip-dev libpq-dev libldap2-dev libbz2-dev default-mysql-client rsyslog imagemagick libwebp-dev libwebp6 webp libmagickwand-dev \
     && docker-php-ext-configure gd --with-jpeg --with-webp \
-    && docker-php-ext-configure ldap --with-libdir=lib/x86_64-linux-gnu/ \
+    && docker-php-ext-configure ldap --with-libdir=lib/$LIB-linux-gnu/ \
     && docker-php-ext-install gd mbstring opcache pdo pdo_mysql pdo_pgsql zip ldap bz2
 
 # Install soap client.
@@ -21,7 +29,7 @@ RUN apt-get install libmemcached-dev -y \
 
 # Install imagick
 RUN apt-get install -y libmagickwand-6.q16-dev --no-install-recommends \
-  && ln -s /usr/lib/x86_64-linux-gnu/ImageMagick-6.8.9/bin-Q16/MagickWand-config /usr/bin \
+  && ln -s /usr/lib/$LIB-linux-gnu/ImageMagick-6.8.9/bin-Q16/MagickWand-config /usr/bin \
   && pecl install imagick \
   && echo "extension=imagick.so" > /usr/local/etc/php/conf.d/ext-imagick.ini
 
