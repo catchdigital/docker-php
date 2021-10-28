@@ -1,4 +1,14 @@
-# docker-php
+# Images build process
+
+## GitHub actions (recommended)
+
+The is a github action on the .github folder which will run automatically when a new tag is published.
+
+The workflow will update the lastest, and create a new tag alongside. It will also create the subimages (xdebug and newrelic) automatically.
+
+_There is no need to push 3 tags as previously, only one tag with the php version its enough._
+
+## Manual process
 
 How to build the image manually with multi-arch support.
 
