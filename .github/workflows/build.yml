@@ -1,4 +1,4 @@
-name: Build and push to HUB
+name: Build and push to Docker hub
 
 on:
   push:
@@ -39,15 +39,15 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: false
-          # tags: catchdigital/awscli:latest,catchdigital/php:${{ env.RELEASE_VERSION }}
+          tags: catchdigital/awscli:latest,catchdigital/php:${{ env.RELEASE_VERSION }}
       -
-        name: Build and push xdebug image
-        id: docker_build_xdebug
+        name: Build and push dev image
+        id: docker_build_dev
         uses: docker/build-push-action@v2
         with:
-          file: xdebug/Dockerfile
+          file: dev/Dockerfile
           push: false
-          # tags: catchdigital/php:${{ env.RELEASE_VERSION }}-xdebug
+          tags: catchdigital/php:${{ env.RELEASE_VERSION }}-dev
       -
         name: Build and push newrelic image
         id: docker_build_newrelic
@@ -55,4 +55,4 @@ jobs:
         with:
           file: newrelic/Dockerfile
           push: false
-          # tags: catchdigital/php:${{ env.RELEASE_VERSION }}-newrelic
+          tags: catchdigital/php:${{ env.RELEASE_VERSION }}-newrelic
