@@ -2,8 +2,6 @@ name: Build and push to Docker hub
 
 on:
   push:
-    branches:
-      - develop
     tags:
       - '*'
 
