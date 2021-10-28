@@ -39,7 +39,7 @@ jobs:
         with:
           push: false
           platforms: linux/amd64,linux/arm64
-          tags: catchdigital/awscli:latest,catchdigital/php:${{ env.RELEASE_VERSION }}
+          tags: catchdigital/awscli:latest,catchdigital/php:${{ env.RELEASE_VERSION }}-fpm
       -
         name: Build and push dev image
         id: docker_build_dev
@@ -47,8 +47,8 @@ jobs:
         with:
           file: dev/Dockerfile
           push: false
-          platforms: linux/amd64,linux/arm64
-          tags: catchdigital/php:${{ env.RELEASE_VERSION }}-dev
+          platforms: linux/amd64,linux/arm64git
+          tags: catchdigital/php:${{ env.RELEASE_VERSION }}-fpm-dev
       -
         name: Build and push newrelic image
         id: docker_build_newrelic
@@ -57,4 +57,4 @@ jobs:
           file: newrelic/Dockerfile
           push: false
           platforms: linux/amd64,linux/arm64
-          tags: catchdigital/php:${{ env.RELEASE_VERSION }}-newrelic
+          tags: catchdigital/php:${{ env.RELEASE_VERSION }}-fpm-newrelic
