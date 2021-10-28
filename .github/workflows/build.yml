@@ -42,7 +42,7 @@ jobs:
           # tags: catchdigital/awscli:latest,catchdigital/php:${{ env.RELEASE_VERSION }}
       -
         name: Build and push xdebug image
-        id: docker_build
+        id: docker_build_xdebug
         uses: docker/build-push-action@v2
         with:
           file: xdebug/Dockerfile
@@ -50,7 +50,7 @@ jobs:
           # tags: catchdigital/php:${{ env.RELEASE_VERSION }}-xdebug
       -
         name: Build and push newrelic image
-        id: docker_build
+        id: docker_build_newrelic
         uses: docker/build-push-action@v2
         with:
           file: newrelic/Dockerfile
