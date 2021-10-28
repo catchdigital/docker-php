@@ -1,0 +1,4 @@
+[worker.oci]
+  enabled = true
+  # platforms is manually configure platforms, detected automatically if unset.
+  platforms = [ "linux/amd64", "linux/arm64" ]
