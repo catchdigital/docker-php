@@ -9,6 +9,8 @@ RUN ARCH= && dpkgArch="$(dpkg --print-architecture)" \
     *) echo "unsupported architecture"; exit 1 ;; \
   esac
 
+RUN echo $ARCH && echo $LIB
+
 # install default PHP extensions
 RUN apt-get update && apt-get install -y libpng-dev libjpeg-dev libonig-dev libzip-dev libpq-dev libldap2-dev libbz2-dev default-mysql-client rsyslog imagemagick libwebp-dev libwebp6 webp libmagickwand-dev \
     && docker-php-ext-configure gd --with-jpeg --with-webp \
