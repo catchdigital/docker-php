@@ -46,7 +46,7 @@ jobs:
         with:
           file: dev/Dockerfile
           push: true
-          platforms: linux/amd64,linux/arm64git
+          platforms: linux/amd64,linux/arm64
           tags: catchdigital/php:${{ env.RELEASE_VERSION }}-dev
       -
         name: Build and push newrelic image
