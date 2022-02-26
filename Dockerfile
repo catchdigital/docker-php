@@ -1,4 +1,4 @@
-FROM php:7.4.25-fpm
+FROM php:7.4.28-fpm
 MAINTAINER Alberto Contreras <a.contreras@catchdigital.com>
 
 ARG TARGETPLATFORM
@@ -55,6 +55,8 @@ RUN chmod +x /php-fpm.sh
 
 # Clean up
 RUN rm -rf /var/lib/apt/lists/*
+
+# Configure www-data user
 RUN usermod -u 1000 www-data \
   && usermod -a -G users www-data \
   && usermod -d /root www-data
@@ -65,6 +67,9 @@ COPY ./.bashrc /root/.bashrc
 # Set up working directory
 WORKDIR /var/www/html
 RUN chown -R www-data:www-data /var/www
+
+# Add project composer bin to PATH
+ENV PATH=$PATH:/var/www/html/vendor/bin
 
 # Start services
 CMD ["/php-fpm.sh"]
