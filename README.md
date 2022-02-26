@@ -4,9 +4,9 @@ Basic PHP image with extra setting ready to use.
 
 ## Version
 
-* `8.0.16-fpm`: PHP 8.0.16 with the necessary tools to run a site. (Latest)
-* `8.0.16-fpm-dev`: Extensions of 8.0.16-fpm with xdebug for development
-* `8.0.16-fpm-newrelic`: Extensions of 8.0.16-fpm with newrelic php extension
+* `8.1.3-fpm`: PHP 8.1.3 with the necessary tools to run a site. (Latest)
+* `8.1.3-fpm-dev`: Extensions of 8.1.3-fpm with xdebug for development
+* `8.1.3-fpm-newrelic`: Extensions of 8.1.3-fpm with newrelic php extension
 
 ## Modules
 
