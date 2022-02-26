@@ -40,7 +40,7 @@ docker buildx inspect --bootstrap
 
 Build your image with the required platforms:
 ```
-docker buildx build --platform linux/arm64,linux/amd64 -t catchdigital/php:7.4.25-fpm .
+docker buildx build --platform linux/arm64,linux/amd64 -t catchdigital/php:7.4.28-fpm .
 ```
 _Adding --push will deploy the image. Use --load for local loading instead. Load only support one platform currently. If no flag added, it will just cached the layers._
 
