@@ -1,4 +1,4 @@
-FROM php:8.1.3-fpm
+FROM php:8.1.5-fpm
 MAINTAINER Alberto Contreras <a.contreras@catchdigital.com>
 
 ARG TARGETPLATFORM
@@ -11,7 +11,7 @@ RUN case $TARGETPLATFORM in \
 esac
 
 # install default PHP extensions
-RUN apt-get update && apt-get install -y libpng-dev libjpeg-dev libonig-dev libzip-dev libpq-dev libldap2-dev libbz2-dev default-mysql-client rsyslog imagemagick libwebp-dev libwebp6 webp libmagickwand-dev \
+RUN apt-get update && apt-get install -y libpng-dev libjpeg-dev libonig-dev libzip-dev libpq-dev libldap2-dev libbz2-dev default-mysql-client rsyslog imagemagick libwebp-dev libwebp6 webp libmagickwand-dev openssh-client \
   && docker-php-ext-configure gd --with-jpeg --with-webp \
   && docker-php-ext-configure ldap --with-libdir=lib/$LIBDIR/ \
   && docker-php-ext-install gd mbstring opcache pdo pdo_mysql pdo_pgsql zip ldap bz2
@@ -57,7 +57,7 @@ RUN chmod +x /php-fpm.sh
 RUN rm -rf /var/lib/apt/lists/*
 
 # Configure www-data user
-RUN usermod -u 1000 www-data \
+RUN usermod -u 33 www-data \
   && usermod -a -G users www-data \
   && usermod -d /root www-data
 

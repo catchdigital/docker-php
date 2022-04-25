@@ -1,4 +1,4 @@
-FROM catchdigital/php:8.1.3-fpm
+FROM catchdigital/php:8.1.5
 MAINTAINER Alberto Contreras <a.contreras@catchdigital.com>
 
 ## Install required packages.
