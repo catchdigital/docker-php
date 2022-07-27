@@ -6,7 +6,6 @@ Basic PHP image with extra setting ready to use.
 
 * `8.1.8-fpm`: PHP 8.1.8 with the necessary tools to run a site. (Latest)
 * `8.1.8-fpm-dev`: Extensions of 8.1.8-fpm with xdebug for development
-* `8.1.8-fpm-newrelic`: Extensions of 8.1.8-fpm with newrelic php extension
 
 ## Modules
 
