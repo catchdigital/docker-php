@@ -1,5 +1,4 @@
-FROM catchdigital/php:8.1.5
-MAINTAINER Alberto Contreras <a.contreras@catchdigital.com>
+FROM catchdigital/php:8.2.19
 
 ## Install required packages.
 RUN apt-get update && apt-get install -y git golang

@@ -1,5 +1,4 @@
-FROM catchdigital/php:8.1.5-fpm
-MAINTAINER Alberto Contreras <a.contreras@catchdigital.com>
+FROM catchdigital/php:8.2.19-fpm
 
 # Install xdebug
 RUN pecl install xdebug \

@@ -1,5 +1,4 @@
-FROM php:8.1.5-fpm
-MAINTAINER Alberto Contreras <a.contreras@catchdigital.com>
+FROM php:8.2.19-fpm
 
 ARG TARGETPLATFORM
 
@@ -11,7 +10,7 @@ RUN case $TARGETPLATFORM in \
 esac
 
 # install default PHP extensions
-RUN apt-get update && apt-get install -y libpng-dev libjpeg-dev libonig-dev libzip-dev libpq-dev libldap2-dev libbz2-dev default-mysql-client rsyslog imagemagick libwebp-dev libwebp6 webp libmagickwand-dev openssh-client \
+RUN apt-get update && apt-get install -y libpng-dev libjpeg-dev libonig-dev libzip-dev libpq-dev libldap2-dev libbz2-dev default-mysql-client rsyslog imagemagick libwebp-dev webp libmagickwand-dev openssh-client \
   && docker-php-ext-configure gd --with-jpeg --with-webp \
   && docker-php-ext-configure ldap --with-libdir=lib/$LIBDIR/ \
   && docker-php-ext-install gd mbstring opcache pdo pdo_mysql pdo_pgsql zip ldap bz2
