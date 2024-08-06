@@ -1,4 +1,4 @@
-FROM php:8.2.19-fpm
+FROM php:8.3.10-fpm
 
 ARG TARGETPLATFORM
 
@@ -28,10 +28,23 @@ RUN apt-get install libmemcached-dev -y \
   && docker-php-ext-enable memcached
 
 # Install imagick
-RUN apt-get install -y libmagickwand-6.q16-dev --no-install-recommends \
-  && ln -s /usr/lib/$LIBDIR/ImageMagick-6.8.9/bin-Q16/MagickWand-config /usr/bin \
-  && pecl install imagick \
-  && echo "extension=imagick.so" > /usr/local/etc/php/conf.d/ext-imagick.ini
+# RUN apt-get install -y libmagickwand-6.q16-dev --no-install-recommends \
+#   && ln -s /usr/lib/$LIBDIR/ImageMagick-6.8.9/bin-Q16/MagickWand-config /usr/bin \
+#   && pecl install imagick \
+#   && echo "extension=imagick.so" > /usr/local/etc/php/conf.d/ext-imagick.ini
+
+# Imagick is installed from the archive because regular installation fails
+# See: https://github.com/Imagick/imagick/issues/643#issuecomment-1834361716
+ARG IMAGICK_VERSION=3.7.0
+RUN curl -L -o /tmp/imagick.tar.gz https://github.com/Imagick/imagick/archive/refs/tags/${IMAGICK_VERSION}.tar.gz \
+    && tar --strip-components=1 -xf /tmp/imagick.tar.gz \
+    && phpize \
+    && ./configure \
+    && make \
+    && make install \
+    && echo "extension=imagick.so" > /usr/local/etc/php/conf.d/ext-imagick.ini \
+    && rm -rf /tmp/*
+    # <<< End of Imagick installation
 
 # set recommended PHP.ini settings
 # see https://secure.php.net/manual/en/opcache.installation.php

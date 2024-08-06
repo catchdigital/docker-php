@@ -1,4 +1,4 @@
-FROM catchdigital/php:8.2.19
+FROM catchdigital/php:8.3.10-fpm
 
 ## Install required packages.
 RUN apt-get update && apt-get install -y git golang
